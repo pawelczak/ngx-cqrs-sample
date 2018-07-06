@@ -1,0 +1,7 @@
+export class BookStoreAnemia {
+
+	constructor(public id: string,
+				public title: string,
+				public content: string,
+				public yearOfPublication: number) {}
+}

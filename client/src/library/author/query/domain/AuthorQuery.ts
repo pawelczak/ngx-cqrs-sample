@@ -1,12 +1,12 @@
-import { ArticleQuery } from '../../../article/domain/query/ArticleQuery';
+import { BookQuery } from '../../../book/domain/query/BookQuery';
 
-import { ArticleContributionQuery } from './ArticleContributionQuery';
+import { BookContributionQuery } from './BookContributionQuery';
 
 export class AuthorQuery {
 
 	public desc: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum';
 
-	private articleContributions: Array<ArticleContributionQuery> = [];
+	private bookContributions: Array<BookContributionQuery> = [];
 
 	constructor(public id: string,
 				public name: string,
@@ -14,24 +14,24 @@ export class AuthorQuery {
 				public contributions: Array<any> = []) {
 	}
 
-	getContributions(): Array<ArticleContributionQuery> {
-		return this.articleContributions;
+	getContributions(): Array<BookContributionQuery> {
+		return this.bookContributions;
 	}
 
-	setContributions(articles: Array<ArticleQuery>): void {
+	setContributions(books: Array<BookQuery>): void {
 
-		this.articleContributions = [];
-		this.contributions.forEach((contrib: ArticleContributionQuery) => {
-			const article = articles.find((article) => article.id === contrib.id);
+		this.bookContributions = [];
+		this.contributions.forEach((contrib: BookContributionQuery) => {
+			const book = books.find((book) => book.id === contrib.id);
 
-			if (article) {
-				this.articleContributions.push(article);
+			if (book) {
+				this.bookContributions.push(book);
 			}
 		});
 	}
 
 	hasContributions(): boolean {
-		return this.articleContributions.length > 0;
+		return this.bookContributions.length > 0;
 	}
 
 }

@@ -3,27 +3,27 @@ import { map } from 'rxjs/operators';
 
 import { AuthorQuery } from './AuthorQuery';
 
-import { ArticleQuery } from '../../../article/domain/query/ArticleQuery';
-import { ArticleQueryRepository } from '../../../article/domain/query/ArticleQueryRepository';
+import { BookQuery } from '../../../book/domain/query/BookQuery';
+import { BookQueryRepository } from '../../../book/domain/query/BookQueryRepository';
 
 export abstract class AuthorQueryRepository {
 
-	constructor(protected articleQueryRepository: ArticleQueryRepository) {
+	constructor(protected bookQueryRepository: BookQueryRepository) {
 	}
 
 	selectAll(): Observable<Array<AuthorQuery>> {
 
-		const articles$ = this.articleQueryRepository.selectAll(),
+		const books$ = this.bookQueryRepository.selectAll(),
 			authors$ = this.selectAuthorsFromState();
 
-		return combineLatest(authors$, articles$)
+		return combineLatest(authors$, books$)
 			.pipe(
 				map((responses) => {
 					const authors: Array<AuthorQuery> = responses[0],
-						articles: Array<ArticleQuery> = responses[1];
+						books: Array<BookQuery> = responses[1];
 
 					authors.forEach((author) => {
-						author.setContributions(articles);
+						author.setContributions(books);
 					});
 
 					return authors;

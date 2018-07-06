@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatCardModule, MatListModule, MatProgressSpinnerModule } from '@angular/material';
 
-import { ArticleModule } from '../../article/app/ArticleModule';
+import { BookModule } from '../../book/app/BookModule';
 
 import { authorReducer } from '../command/infrastructure/store/AuthorReducer';
 import { commandHandlerProviders } from '../command/domain/handlers/commandHandlerProviders';
@@ -55,7 +55,7 @@ const providers: Array<Provider> = [
 			}
 		}),
 
-		ArticleModule.forRoot()
+		BookModule.forRoot()
 	],
 	declarations: [
 		AuthorListComponent,

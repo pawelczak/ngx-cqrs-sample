@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { AuthorAggregate } from '../../domain/AuthorAggregate';
-import { ArticleContribution } from '../../domain/ArticleContribution';
+import { BookContribution } from '../../domain/BookContribution';
 
 @Injectable()
 export class RestAuthorConverter {
@@ -23,9 +23,9 @@ export class RestAuthorConverter {
 		})
 	}
 
-	private convertContributions(rawContribs: Array<any>): Array<ArticleContribution>{
+	private convertContributions(rawContribs: Array<any>): Array<BookContribution>{
 		return rawContribs.map((contrib) => {
-			return new ArticleContribution(contrib);
+			return new BookContribution(contrib);
 		});
 	}
 }

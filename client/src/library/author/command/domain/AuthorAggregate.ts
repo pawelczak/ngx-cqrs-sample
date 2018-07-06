@@ -1,6 +1,6 @@
-import { ArticleContribution } from './ArticleContribution';
+import { BookContribution } from './BookContribution';
 
-import { ArticleAggregate } from '../../../article/domain/command/ArticleAggregate';
+import { BookAggregate } from '../../../book/domain/command/BookAggregate';
 
 export class AuthorAggregate {
 
@@ -8,7 +8,7 @@ export class AuthorAggregate {
 
 	constructor(public id: string,
 				public name: string,
-				public contributions: Array<ArticleContribution>) {}
+				public contributions: Array<BookContribution>) {}
 
 	setRating(rating: number): void {
 		this.rating = rating;
@@ -22,12 +22,12 @@ export class AuthorAggregate {
 		return this.rating;
 	}
 
-	setContributions(articles: Array<ArticleAggregate>): void {
+	setContributions(books: Array<BookAggregate>): void {
 
-		this.contributions.forEach((contrib: ArticleContribution) => {
-			const article = articles.find((article: ArticleAggregate) => article.getId() === contrib.id);
-			if (article) {
-				contrib.setArticle(article);
+		this.contributions.forEach((contrib: BookContribution) => {
+			const book = books.find((book: BookAggregate) => book.getId() === contrib.id);
+			if (book) {
+				contrib.setBook(book);
 			}
 		});
 	}

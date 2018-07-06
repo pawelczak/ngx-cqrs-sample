@@ -7,8 +7,8 @@ import { AuthorResource } from '../AuthorResource';
 import { AuthorAggregate } from '../AuthorAggregate';
 import { LoadAuthorsCommand } from '../AuthorCommands';
 
-import { ArticleAggregateRepository } from '../../../../article/domain/command/ArticleAggregateRepository';
-import { ArticleAggregate } from '../../../../article/domain/command/ArticleAggregate';
+import { BookAggregateRepository } from '../../../../book/domain/command/BookAggregateRepository';
+import { BookAggregate } from '../../../../book/domain/command/BookAggregate';
 
 import { CommandHandler } from '../../../../../util/cqrs/domain/command/CommandHandler';
 import { CommandBus } from '../../../../../util/cqrs/domain/command/CommandBus';
@@ -21,7 +21,7 @@ export class LoadAuthorCommandHandler extends CommandHandler {
 				private commandDispatcher: CommandDispatcher,
 				private authorAggregateRepository: AuthorAggregateRepository,
 				private authorResource: AuthorResource,
-				private articleAggregateRepository: ArticleAggregateRepository) {
+				private bookAggregateRepository: BookAggregateRepository) {
 		super(LoadAuthorsCommand.type);
 	}
 
@@ -42,14 +42,14 @@ export class LoadAuthorCommandHandler extends CommandHandler {
 
 					});
 
-					return this.articleAggregateRepository
+					return this.bookAggregateRepository
 							   .selectAll()
 							   .pipe(
 								   take(1),
-								   map((articleAggregates: Array<ArticleAggregate>) => {
+								   map((bookAggregates: Array<BookAggregate>) => {
 
 									   aggregates.forEach((aggregate) => {
-										   aggregate.setContributions(articleAggregates);
+										   aggregate.setContributions(bookAggregates);
 									   });
 
 									   this.authorAggregateRepository.save(aggregates);

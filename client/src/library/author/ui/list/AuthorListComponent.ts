@@ -7,8 +7,8 @@ import { AuthorsLoadedEvent } from '../../command/domain/AuthorEvents';
 import { AuthorQueryRepository } from '../../query/domain/AuthorQueryRepository';
 import { AuthorQuery } from '../../query/domain/AuthorQuery';
 
-import { FetchArticlesCommand } from '../../../article/domain/command/fetch/FetchArticlesCommand';
-import { ArticlesFetchedEvent } from '../../../article/domain/command/fetch/ArticlesFetchedEvent';
+import { FetchBooksCommand } from '../../../book/domain/command/fetch/FetchBooksCommand';
+import { BooksFetchedEvent } from '../../../book/domain/command/fetch/BooksFetchedEvent';
 
 import { CommandDispatcher } from '../../../../util/cqrs/domain/command/CommandDispatcher';
 import { EventBus } from '../../../../util/cqrs/domain/event/EventBus';
@@ -54,14 +54,14 @@ export class AuthorListComponent implements OnInit {
 
 		this.eventBus
 			.pipe(
-				filter((event: DomainEvent) => event.constructor.name === ArticlesFetchedEvent.type),
+				filter((event: DomainEvent) => event.constructor.name === BooksFetchedEvent.type),
 				take(1)
 			)
 			.subscribe(() => {
 				this.commandDispatcher.dispatch(new LoadAuthorsCommand());
 			});
 
-		this.commandDispatcher.dispatch(new FetchArticlesCommand());
+		this.commandDispatcher.dispatch(new FetchBooksCommand());
 
 	}
 

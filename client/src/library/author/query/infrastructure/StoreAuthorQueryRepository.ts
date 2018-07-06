@@ -7,14 +7,14 @@ import { AuthorQueryRepository } from '../domain/AuthorQueryRepository';
 import { AuthorQuery } from '../domain/AuthorQuery';
 import { AuthorState } from '../../command/infrastructure/store/AuthorState';
 
-import { ArticleQueryRepository } from '../../../article/domain/query/ArticleQueryRepository';
+import { BookQueryRepository } from '../../../book/domain/query/BookQueryRepository';
 
 @Injectable()
 export class StoreAuthorQueryRepository extends AuthorQueryRepository {
 
 	constructor(private store: Store<any>,
-				articleQueryRepository: ArticleQueryRepository) {
-		super(articleQueryRepository);
+				bookQueryRepository: BookQueryRepository) {
+		super(bookQueryRepository);
 	}
 
 	selectAuthorsFromState(): Observable<Array<AuthorQuery>> {
