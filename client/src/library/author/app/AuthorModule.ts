@@ -1,22 +1,24 @@
 import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { MatButtonModule, MatCardModule, MatListModule, MatProgressSpinnerModule } from '@angular/material';
 
-import { AuthorListComponent } from '../ui/list/AuthorListComponent';
+import { ArticleModule } from '../../article/app/ArticleModule';
+
 import { authorReducer } from '../command/infrastructure/store/AuthorReducer';
-import { AuthorQueryRepository } from '../query/domain/AuthorQueryRepository';
-import { StoreAuthorQueryRepository } from '../query/infrastructure/StoreAuthorQueryRepository';
+import { commandHandlerProviders } from '../command/domain/handlers/commandHandlerProviders';
 import { AuthorResource } from '../command/domain/AuthorResource';
 import { RestAuthorResource } from '../command/infrastructure/rest/RestAuthorResource';
 import { AuthorAggregateRepository } from '../command/domain/AuthorAggregateRepository';
 import { StoreAuthorAggregateRepository } from '../command/infrastructure/store/StoreAuthorAggregateRepository';
 import { AuthorAggregateConverter } from '../command/infrastructure/store/AuthorAggregateConverter';
-
-import { commandHandlerProviders } from '../command/domain/handlers/commandHandlerProviders';
-import { AuthorPanelComponent } from '../ui/list/authorpanel/AuthorPanelComponent';
-import { ArticleModule } from '../../article/app/ArticleModule';
 import { RestAuthorConverter } from '../command/infrastructure/rest/RestAuthorConverter';
+
+import { AuthorQueryRepository } from '../query/domain/AuthorQueryRepository';
+import { StoreAuthorQueryRepository } from '../query/infrastructure/StoreAuthorQueryRepository';
+
+import { AuthorListComponent } from '../ui/list/AuthorListComponent';
+import { AuthorPanelComponent } from '../ui/list/authorpanel/AuthorPanelComponent';
+
 import { CqrsModule } from '../../../util/cqrs/CqrsModule';
 
 const storeName = 'library';

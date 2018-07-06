@@ -1,8 +1,9 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { ArticleAggregateRepository } from '../domain/command/ArticleAggregateRepository';
-import { NgrxArticleAggregateRepository } from '../infrastructure/ngrx/command/NgrxArticleAggregateRepository';
 import { FetchArticlesCommandHandler } from '../domain/command/fetch/FetchArticlesCommandHandler';
+
+import { NgrxArticleAggregateRepository } from '../infrastructure/ngrx/command/NgrxArticleAggregateRepository';
 
 import { COMMAND_HANDLERS } from '../../../util/cqrs/domain/command/COMMAND_HANDLERS';
 

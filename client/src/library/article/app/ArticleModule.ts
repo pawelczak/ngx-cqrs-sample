@@ -1,11 +1,12 @@
 import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 
-import { articleReducer } from '../infrastructure/ngrx/ArticleReducer';
 import { ArticleCommandModule } from './ArticleCommandModule';
 import { ArticleQueryModule } from './ArticleQueryModule';
+import { ArticleResource } from '../domain/command/ArticleResource';
+
 import { ARTICLE_STORE_NAME } from '../infrastructure/ngrx/NgrxArticleStoreName';
 import { NgrxArticleConverter } from '../infrastructure/ngrx/NgrxArticleConverter';
-import { ArticleResource } from '../domain/command/ArticleResource';
+import { articleReducer } from '../infrastructure/ngrx/ArticleReducer';
 import { RestArticleResource } from '../infrastructure/rest/RestArticleResource';
 import { RestArticleConverter } from '../infrastructure/rest/RestArticleConverter';
 

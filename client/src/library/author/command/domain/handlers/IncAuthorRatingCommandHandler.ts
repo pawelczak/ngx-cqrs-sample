@@ -5,7 +5,6 @@ import { AuthorAggregate } from '../AuthorAggregate';
 import { AuthorResource } from '../AuthorResource';
 import { AuthorAggregateRepository } from '../AuthorAggregateRepository';
 import { IncAuthorRatingCommand } from '../AuthorCommands';
-
 import { IncAuthorRatingEvent } from '../AuthorEvents';
 
 import { CommandHandler } from '../../../../../util/cqrs/domain/command/CommandHandler';

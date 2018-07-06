@@ -1,5 +1,6 @@
-import { ArticleContributionQuery } from './ArticleContributionQuery';
 import { ArticleQuery } from '../../../article/domain/query/ArticleQuery';
+
+import { ArticleContributionQuery } from './ArticleContributionQuery';
 
 export class AuthorQuery {
 

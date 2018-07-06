@@ -2,22 +2,24 @@ import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { CqrsForRootModule } from './CqrsForRootModule';
+import { CqrsForFeatureModule } from './CqrsForFeatureModule';
+import { CqrsModuleConfig } from './CqrsModuleConfig';
+import { CqrsStrategy } from './CqrsStrategy';
+
 import { CommandStream } from './domain/command/CommandStream';
 import { FILTERED_COMMAND_STREAM } from './domain/command/FilteredCommandsStream';
 import { CommandBus } from './domain/command/CommandBus';
 import { CommandDispatcher } from './domain/command/CommandDispatcher';
 import { COMMAND_HANDLERS } from './domain/command/COMMAND_HANDLERS';
 import { LogCommandHandler } from './domain/command/LogCommandHandler';
-import { NgrxLoggerCommandHandler } from './infrastructure/ngrx/command/NgrxLoggerCommandHandler';
-import { CqrsStrategy } from './CqrsStrategy';
 import { EventBus } from './domain/event/EventBus';
 import { EventDispatcher } from './domain/event/EventDispatcher';
 import { EventStream } from './domain/event/EventStream';
 import { EVENT_HANDLERS } from './domain/event/EVENT_HANDLERS';
+
 import { NgrxEventHandler } from './infrastructure/ngrx/event/NgrxEventHandler';
-import { CqrsForRootModule } from './CqrsForRootModule';
-import { CqrsForFeatureModule } from './CqrsForFeatureModule';
-import { CqrsModuleConfig } from './CqrsModuleConfig';
+import { NgrxLoggerCommandHandler } from './infrastructure/ngrx/command/NgrxLoggerCommandHandler';
 
 const handlers: Array<Provider> = [
 	// {

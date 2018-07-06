@@ -1,7 +1,8 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
-import { NgrxArticleQueryRepository } from '../infrastructure/ngrx/query/NgrxArticleQueryRepository';
 import { ArticleQueryRepository } from '../domain/query/ArticleQueryRepository';
+
+import { NgrxArticleQueryRepository } from '../infrastructure/ngrx/query/NgrxArticleQueryRepository';
 
 const providers = [
 	{

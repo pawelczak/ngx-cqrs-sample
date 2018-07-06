@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { AuthorQuery } from '../../../query/domain/AuthorQuery';
 import { IncAuthorRatingCommand } from '../../../command/domain/AuthorCommands';
+import { AuthorQuery } from '../../../query/domain/AuthorQuery';
 
 import { CommandDispatcher } from '../../../../../util/cqrs/domain/command/CommandDispatcher';
 
