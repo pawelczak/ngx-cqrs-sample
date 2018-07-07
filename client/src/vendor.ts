@@ -9,3 +9,4 @@ import 'lodash';
 
 import '@angular/material/prebuilt-themes/indigo-pink.css';
 
+import 'styles.scss'

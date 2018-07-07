@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Injector, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Injector, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, switchMap, take, takeUntil } from 'rxjs/operators';
 
@@ -16,10 +16,13 @@ import { DomainEvent } from '../../../../util/cqrs/domain/event/DomainEvent';
 
 @Component({
 	selector: 'cqrs-author-list',
+	styleUrls: [
+		'./AuthorListComponent.ngx.scss'
+	],
 	templateUrl: './AuthorListComponent.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AuthorListComponent implements OnInit {
+export class AuthorListComponent implements OnInit, OnDestroy {
 
 	authors: Array<AuthorQuery>;
 

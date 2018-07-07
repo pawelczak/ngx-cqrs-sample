@@ -7,6 +7,9 @@ import { CommandDispatcher } from '../../../../../util/cqrs/domain/command/Comma
 
 @Component({
 	selector: 'cqrs-author-panel',
+	styleUrls: [
+		'./AuthorPanelComponent.ngx.scss'
+	],
 	templateUrl: './AuthorPanelComponent.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
