@@ -6,7 +6,7 @@ import { CommandHandler } from '../domain/command/CommandHandler';
 import { EventHandler } from '../domain/event/EventHandler';
 import { EventBus } from '../domain/event/EventBus';
 import { COMMAND_HANDLERS } from '../domain/command/COMMAND_HANDLERS';
-import { EVENT_HANDLERS } from '../../ngx-cqrs';
+import { EVENT_HANDLERS } from '../domain/event/EVENT_HANDLERS';
 
 @NgModule({
 	imports: []

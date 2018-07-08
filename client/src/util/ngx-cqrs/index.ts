@@ -1,11 +1,7 @@
 /**
  * Core package exports
  */
-export * from './core/CqrsForFeatureModule';
-export * from './core/CqrsForRootModule';
-// export { CqrsModule } from './core/CqrsModule';
-export * from './core/CqrsModuleConfig';
-export * from './core/CqrsStrategy';
+export * from './core';
 
 /**
  * Command package exports

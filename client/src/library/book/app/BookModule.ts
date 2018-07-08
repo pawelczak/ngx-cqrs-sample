@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 
-import { CqrsModule } from 'ngx-cqrs/core/CqrsModule';
+import { CqrsModule } from 'ngx-cqrs';
 
 import { BookCommandModule } from './BookCommandModule';
 import { BookQueryModule } from './BookQueryModule';

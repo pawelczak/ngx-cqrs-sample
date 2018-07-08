@@ -2,16 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
-import { CqrsModule } from 'ngx-cqrs/core/CqrsModule';
-import { CqrsStrategy } from 'ngx-cqrs';
+import { CqrsStrategy, CqrsModule } from 'ngx-cqrs';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 
 import { AuthorModule } from '../library/author/app/AuthorModule';
-
-
-
 
 @NgModule({
 	imports: [

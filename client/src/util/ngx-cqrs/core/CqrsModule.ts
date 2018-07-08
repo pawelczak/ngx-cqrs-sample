@@ -2,8 +2,8 @@ import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { CqrsForRootModule } from './CqrsForRootModule';
 import { CqrsForFeatureModule } from './CqrsForFeatureModule';
+import { CqrsForRootModule } from './CqrsForRootModule';
 import { CqrsModuleConfig } from './CqrsModuleConfig';
 import { CqrsStrategy } from './CqrsStrategy';
 
