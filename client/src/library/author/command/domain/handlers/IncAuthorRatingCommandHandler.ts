@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { switchMap, map } from 'rxjs/operators';
 
+import { CommandHandler, EventDispatcher } from 'ngx-cqrs';
+
 import { AuthorAggregate } from '../AuthorAggregate';
 import { AuthorResource } from '../AuthorResource';
 import { AuthorAggregateRepository } from '../AuthorAggregateRepository';
 import { IncAuthorRatingCommand } from '../AuthorCommands';
 import { IncAuthorRatingEvent } from '../AuthorEvents';
 
-import { CommandHandler } from '../../../../../util/cqrs/domain/command/CommandHandler';
-import { EventDispatcher } from '../../../../../util/cqrs/domain/event/EventDispatcher';
 
 @Injectable()
 export class IncAuthorRatingCommandHandler extends CommandHandler {

@@ -2,6 +2,8 @@ import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatCardModule, MatListModule, MatProgressSpinnerModule } from '@angular/material';
 
+import { CqrsModule } from 'ngx-cqrs/core/CqrsModule';
+
 import { BookModule } from '../../book/app/BookModule';
 
 import { authorReducer } from '../command/infrastructure/store/AuthorReducer';
@@ -19,7 +21,7 @@ import { StoreAuthorQueryRepository } from '../query/infrastructure/StoreAuthorQ
 import { AuthorListComponent } from '../ui/list/AuthorListComponent';
 import { AuthorPanelComponent } from '../ui/list/authorpanel/AuthorPanelComponent';
 
-import { CqrsModule } from '../../../util/cqrs/CqrsModule';
+
 
 const storeName = 'library';
 

@@ -1,4 +1,4 @@
-import { DomainEvent } from '../../../../../util/cqrs/domain/event/DomainEvent';
+import { DomainEvent } from 'ngx-cqrs';
 
 export class BooksFetchedEvent extends DomainEvent {
 	constructor(public data: any) {

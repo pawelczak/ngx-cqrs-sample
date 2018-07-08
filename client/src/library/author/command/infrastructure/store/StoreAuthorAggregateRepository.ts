@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
+import { EventDispatcher } from 'ngx-cqrs';
+
 import { AuthorAggregateRepository } from '../../domain/AuthorAggregateRepository';
 import { AuthorAggregate } from '../../domain/AuthorAggregate';
 import { AuthorChangedEvent, AuthorsLoadedEvent } from '../../domain/AuthorEvents';
@@ -10,7 +12,6 @@ import { AuthorChangedEvent, AuthorsLoadedEvent } from '../../domain/AuthorEvent
 import { AuthorAggregateConverter } from './AuthorAggregateConverter';
 import { AuthorState } from './AuthorState';
 
-import { EventDispatcher } from '../../../../../util/cqrs/domain/event/EventDispatcher';
 
 @Injectable()
 export class StoreAuthorAggregateRepository extends AuthorAggregateRepository {

@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 
+import { CommandHandler } from 'ngx-cqrs';
+
 import { FetchBooksCommand } from './FetchBooksCommand';
 import { BookResource } from '../BookResource';
 import { BookAggregateRepository } from '../BookAggregateRepository';
 import { BookAggregate } from '../BookAggregate';
-
-import { CommandHandler } from '../../../../../util/cqrs/domain/command/CommandHandler';
-
 
 @Injectable()
 export class FetchBooksCommandHandler extends CommandHandler {

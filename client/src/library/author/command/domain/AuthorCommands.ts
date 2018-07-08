@@ -1,4 +1,4 @@
-import { Command } from '../../../../util/cqrs/domain/command/Command';
+import { Command } from 'ngx-cqrs';
 
 export class LoadAuthorsCommand extends Command {
 

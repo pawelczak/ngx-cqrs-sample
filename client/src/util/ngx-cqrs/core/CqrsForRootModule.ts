@@ -1,12 +1,12 @@
 import { Inject, NgModule } from '@angular/core';
 
-import { EVENT_HANDLERS } from './domain/event/EVENT_HANDLERS';
-import { CommandBus } from './domain/command/CommandBus';
-import { Command } from './domain/command/Command';
-import { CommandHandler } from './domain/command/CommandHandler';
-import { EventHandler } from './domain/event/EventHandler';
-import { EventBus } from './domain/event/EventBus';
-import { COMMAND_HANDLERS } from './domain/command/COMMAND_HANDLERS';
+import { CommandBus } from '../domain/command/CommandBus';
+import { Command } from '../domain/command/Command';
+import { CommandHandler } from '../domain/command/CommandHandler';
+import { EventHandler } from '../domain/event/EventHandler';
+import { EventBus } from '../domain/event/EventBus';
+import { COMMAND_HANDLERS } from '../domain/command/COMMAND_HANDLERS';
+import { EVENT_HANDLERS } from '../../ngx-cqrs';
 
 @NgModule({
 	imports: []

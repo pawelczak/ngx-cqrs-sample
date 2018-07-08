@@ -3,9 +3,12 @@
 		"target": "es5",
 		"module": "commonjs",
 		"moduleResolution": "node",
+		"baseUrl": ".",
 		"sourceMap": true,
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true,
+		"allowJs": true,
 		"removeComments": false,
 		"noImplicitAny": true,
 		"suppressImplicitAnyIndexErrors": true,
@@ -22,10 +25,16 @@
 			"es6-shim",
 			"jasmine",
 			"node"
-		]
+		],
+		"paths": {
+			"src/*": [ "src/*" ],
+			"ngx-cqrs/*": [ "src/util/ngx-cqrs/*" ],
+			"ngx-cqrs": [ "src/util/ngx-cqrs" ]
+		}
 	},
 	"exclude": [
-		"node_modules"
+		"node_modules",
+		"*.json"
 	],
 	"awesomeTypescriptLoaderOptions": {
 		"useWebpackText": true

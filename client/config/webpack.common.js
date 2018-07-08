@@ -1,6 +1,7 @@
 const helpers = require('./helpers'),
 	webpack = require('webpack'),
 	path = require('path'),
+	rootDir = path.resolve(__dirname, '..');
 	HtmlWebpackPlugin = require('html-webpack-plugin'),
 	CopyWebpackPlugin = require('copy-webpack-plugin'),
 	precss = require('precss'),
@@ -17,15 +18,22 @@ module.exports = {
 
 	output: {
 		filename: '[name].bundle.js',
-		path: path.join(__dirname, '../dist')
+		path: path.join(rootDir, 'dist')
 	},
 
 	resolve: {
 		extensions: ['.js', '.ts', '.scss', '.css', '.json'],
 		modules: [
-			path.join(__dirname, '../node_modules'),
-			path.join(__dirname, '../src')
-		]
+			path.join(rootDir, 'node_modules'),
+			path.join(rootDir, 'src'),
+		],
+		alias: {
+			'src': path.resolve(rootDir, 'src'),
+			'ngx-cqrs': path.resolve(rootDir, 'src/util/ngx-cqrs'),
+			// 'src': path.resolve(rootDir, '../../src/*')
+			// 'src/util': path.resolve(rootDir, 'src/util/*')
+
+		}
 	},
 
 	resolveLoader: {

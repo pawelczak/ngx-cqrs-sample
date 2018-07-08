@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { zip } from 'rxjs';
 import { switchMap, map, take } from 'rxjs/operators';
 
+import { CommandHandler, CommandBus, CommandDispatcher } from 'ngx-cqrs';
+
 import { AuthorAggregateRepository } from '../AuthorAggregateRepository';
 import { AuthorResource } from '../AuthorResource';
 import { AuthorAggregate } from '../AuthorAggregate';
@@ -9,10 +11,6 @@ import { LoadAuthorsCommand } from '../AuthorCommands';
 
 import { BookAggregateRepository } from '../../../../book/domain/command/BookAggregateRepository';
 import { BookAggregate } from '../../../../book/domain/command/BookAggregate';
-
-import { CommandHandler } from '../../../../../util/cqrs/domain/command/CommandHandler';
-import { CommandBus } from '../../../../../util/cqrs/domain/command/CommandBus';
-import { CommandDispatcher } from '../../../../../util/cqrs/domain/command/CommandDispatcher';
 
 @Injectable()
 export class LoadAuthorCommandHandler extends CommandHandler {

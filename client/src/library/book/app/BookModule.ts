@@ -1,5 +1,7 @@
 import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 
+import { CqrsModule } from 'ngx-cqrs/core/CqrsModule';
+
 import { BookCommandModule } from './BookCommandModule';
 import { BookQueryModule } from './BookQueryModule';
 import { BookResource } from '../domain/command/BookResource';
@@ -10,7 +12,6 @@ import { bookReducer } from '../infrastructure/ngrx/BookReducer';
 import { RestBookResource } from '../infrastructure/rest/RestBookResource';
 import { RestBookConverter } from '../infrastructure/rest/RestBookConverter';
 
-import { CqrsModule } from '../../../util/cqrs/CqrsModule';
 
 const storeName = 'books';
 

@@ -1,11 +1,12 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
+import { COMMAND_HANDLERS } from 'ngx-cqrs';
+
 import { BookAggregateRepository } from '../domain/command/BookAggregateRepository';
 import { FetchBooksCommandHandler } from '../domain/command/fetch/FetchBooksCommandHandler';
 
 import { NgrxBookAggregateRepository } from '../infrastructure/ngrx/command/NgrxBookAggregateRepository';
 
-import { COMMAND_HANDLERS } from '../../../util/cqrs/domain/command/COMMAND_HANDLERS';
 
 const providers = [
 	{

@@ -8,7 +8,7 @@ import { BookQueryRepository } from '../../../book/domain/query/BookQueryReposit
 
 export abstract class AuthorQueryRepository {
 
-	constructor(protected bookQueryRepository: BookQueryRepository) {
+	protected constructor(protected bookQueryRepository: BookQueryRepository) {
 	}
 
 	selectAll(): Observable<Array<AuthorQuery>> {

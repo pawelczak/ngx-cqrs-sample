@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy, Injector, ChangeDetectorRef
 import { Subject } from 'rxjs';
 import { filter, switchMap, take, takeUntil } from 'rxjs/operators';
 
+import { CommandDispatcher, EventBus, DomainEvent } from 'ngx-cqrs';
+
 import { LoadAuthorsCommand } from '../../command/domain/AuthorCommands';
 import { AuthorsLoadedEvent } from '../../command/domain/AuthorEvents';
 import { AuthorQueryRepository } from '../../query/domain/AuthorQueryRepository';
@@ -10,9 +12,6 @@ import { AuthorQuery } from '../../query/domain/AuthorQuery';
 import { FetchBooksCommand } from '../../../book/domain/command/fetch/FetchBooksCommand';
 import { BooksFetchedEvent } from '../../../book/domain/command/fetch/BooksFetchedEvent';
 
-import { CommandDispatcher } from '../../../../util/cqrs/domain/command/CommandDispatcher';
-import { EventBus } from '../../../../util/cqrs/domain/event/EventBus';
-import { DomainEvent } from '../../../../util/cqrs/domain/event/DomainEvent';
 
 @Component({
 	selector: 'cqrs-author-list',

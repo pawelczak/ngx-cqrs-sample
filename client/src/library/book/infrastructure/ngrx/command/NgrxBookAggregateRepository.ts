@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { EventDispatcher } from 'ngx-cqrs';
+
 import { BookStoreAnemia } from '../BookStoreAnemia';
 import { BOOK_STORE_NAME } from '../NgrxBookStoreName';
 import { NgrxBookConverter } from '../NgrxBookConverter';
@@ -11,7 +13,6 @@ import { BookAggregateRepository } from '../../../domain/command/BookAggregateRe
 import { BookAggregate } from '../../../domain/command/BookAggregate';
 import { BooksFetchedEvent } from '../../../domain/command/fetch/BooksFetchedEvent';
 
-import { EventDispatcher } from '../../../../../util/cqrs/domain/event/EventDispatcher';
 
 @Injectable()
 export class NgrxBookAggregateRepository extends BookAggregateRepository {
