@@ -1,6 +1,11 @@
 :host {
-  color: #333;
-  display: block;
-  margin: 0 auto;
-  max-width: 1000px;
+	color: #333;
+	display: block;
+	margin: 0 auto;
+	max-width: 1000px;
+
+	.spacer {
+		display: block;
+		width: 20px;
+	}
 }

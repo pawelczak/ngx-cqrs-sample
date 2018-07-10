@@ -27,7 +27,6 @@
 			"node"
 		],
 		"paths": {
-			"src/*": [ "src/*" ],
 			"ngx-cqrs/*": [ "src/util/ngx-cqrs/*" ],
 			"ngx-cqrs": [ "src/util/ngx-cqrs" ]
 		}

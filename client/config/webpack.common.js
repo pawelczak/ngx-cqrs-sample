@@ -29,10 +29,7 @@ module.exports = {
 		],
 		alias: {
 			'src': path.resolve(rootDir, 'src'),
-			'ngx-cqrs': path.resolve(rootDir, 'src/util/ngx-cqrs'),
-			// 'src': path.resolve(rootDir, '../../src/*')
-			// 'src/util': path.resolve(rootDir, 'src/util/*')
-
+			'ngx-cqrs': path.resolve(rootDir, 'src/util/ngx-cqrs')
 		}
 	},
 

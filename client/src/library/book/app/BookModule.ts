@@ -1,4 +1,6 @@
 import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatTableModule } from '@angular/material';
 
 import { CqrsModule } from 'ngx-cqrs';
 
@@ -11,6 +13,10 @@ import { NgrxBookConverter } from '../infrastructure/ngrx/NgrxBookConverter';
 import { bookReducer } from '../infrastructure/ngrx/BookReducer';
 import { RestBookResource } from '../infrastructure/rest/RestBookResource';
 import { RestBookConverter } from '../infrastructure/rest/RestBookConverter';
+import { BookListComponent } from '../ui/list/BookListComponent';
+
+import { BookQueryService } from './services/BookQueryService';
+import { BookCommandService } from './services/BookCommandService';
 
 
 const storeName = 'books';
@@ -24,20 +30,28 @@ const providers: Array<Provider> = [
 		useClass: RestBookResource
 	},
 	RestBookConverter,
-	NgrxBookConverter
+	NgrxBookConverter,
+
+	BookQueryService,
+	BookCommandService
 ];
 
 @NgModule({
 	imports: [
+		BrowserModule,
 		CqrsModule.forFeature({
 			storeName: storeName,
 			states: {
 				books: bookReducer
 			}
 		}),
+		MatTableModule,
 
 		BookCommandModule.forRoot(),
 		BookQueryModule.forRoot()
+	],
+	declarations: [
+		BookListComponent
 	]
 })
 export class BookModule {

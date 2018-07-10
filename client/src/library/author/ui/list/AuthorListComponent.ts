@@ -39,6 +39,7 @@ export class AuthorListComponent implements OnInit, OnDestroy {
 		this.eventBus
 			.pipe(
 				filter((event: DomainEvent) => event.constructor.name === AuthorsLoadedEvent.type),
+				take(1),
 				switchMap(() => {
 					return this.authorQueryRepository
 							   .selectAll()
