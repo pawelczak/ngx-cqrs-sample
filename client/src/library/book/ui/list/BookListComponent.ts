@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { BookQuery } from '../../domain/query/BookQuery';
 import { BookQueryService } from '../../app/services/BookQueryService';
+import { BookCommandService } from '../../app/services/BookCommandService';
 
 @Component({
 	selector: 'cqrs-book-list',
@@ -20,10 +21,14 @@ export class BookListComponent implements OnInit, OnDestroy {
 	private unsubscribe$ = new Subject<void>();
 
 	constructor(private changeDetectorRef: ChangeDetectorRef,
-				private bookQueryService: BookQueryService) {
+				private bookQueryService: BookQueryService,
+				private bookCommandService: BookCommandService) {
 	}
 
 	ngOnInit() {
+
+		this.bookCommandService.fetch();
+
 
 		this.bookQueryService
 			.selectAll()
@@ -39,6 +44,9 @@ export class BookListComponent implements OnInit, OnDestroy {
 	ngOnDestroy() {
 		this.unsubscribe$.next();
 		this.unsubscribe$.complete();
+
+		this.bookQueryService.destroy();
+		this.bookCommandService.destroy();
 	}
 
 }

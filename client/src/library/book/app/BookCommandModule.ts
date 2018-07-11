@@ -6,6 +6,7 @@ import { BookAggregateRepository } from '../domain/command/BookAggregateReposito
 import { FetchBooksCommandHandler } from '../domain/command/fetch/FetchBooksCommandHandler';
 
 import { NgrxBookAggregateRepository } from '../infrastructure/ngrx/command/NgrxBookAggregateRepository';
+import { BookCommandService } from './services/BookCommandService';
 
 
 const providers = [
@@ -16,7 +17,8 @@ const providers = [
 		provide: COMMAND_HANDLERS,
 		useClass: FetchBooksCommandHandler,
 		multi: true
-	}
+	},
+	BookCommandService
 ];
 
 @NgModule({

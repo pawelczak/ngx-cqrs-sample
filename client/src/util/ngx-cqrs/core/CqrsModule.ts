@@ -20,6 +20,7 @@ import { EVENT_HANDLERS } from '../domain/event/EVENT_HANDLERS';
 
 import { NgrxEventHandler } from '../infrastructure/ngrx/event/NgrxEventHandler';
 import { NgrxLoggerCommandHandler } from '../infrastructure/ngrx/command/NgrxLoggerCommandHandler';
+import { EventStore } from 'ngx-cqrs/domain/event/EventStore';
 
 const handlers: Array<Provider> = [
 	// {
@@ -36,6 +37,7 @@ const providers = [
 	CommandDispatcher,
 	EventBus,
 	EventStream,
+	EventStore,
 	EventDispatcher,
 	...handlers
 ];

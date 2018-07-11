@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { filter, switchMap, take } from 'rxjs/operators';
 
 import { DomainEvent, EventBus } from 'ngx-cqrs';
@@ -10,6 +10,8 @@ import { BooksFetchedEvent } from '../../domain/command/fetch/BooksFetchedEvent'
 
 @Injectable()
 export class BookQueryService {
+
+	private unsubscribe$ = new Subject<void>();
 
 	constructor(private eventBus: EventBus,
 				private bookQueryRepository: BookQueryRepository) {
@@ -27,6 +29,12 @@ export class BookQueryService {
 		// 				   return this.bookQueryRepository.selectAll();
 		// 			   })
 		// 		   );
+	}
+
+	destroy(): void {
+		this.unsubscribe$.next();
+		this.unsubscribe$.complete();
+		this.unsubscribe$ = new Subject<void>();
 	}
 
 }
