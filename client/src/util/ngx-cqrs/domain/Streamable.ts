@@ -7,4 +7,12 @@ export abstract class Streamable {
 	static get type(): string {
 		return this.prototype.constructor.name;
 	}
+
+	equalsByType(s: Streamable): boolean {
+		return this.constructor.name === s.constructor.name;
+	}
+
+	equals(s: Streamable): boolean {
+		return (this.constructor.name === s.constructor.name) && (this.guid === s.guid);
+	}
 }

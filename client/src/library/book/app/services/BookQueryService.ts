@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { filter, switchMap, take } from 'rxjs/operators';
 
-import { DomainEvent, EventBus } from 'ngx-cqrs';
+import { EventStore } from 'ngx-cqrs/domain/event/EventStore';
 
 import { BookQueryRepository } from '../../domain/query/BookQueryRepository';
 import { BookQuery } from '../../domain/query/BookQuery';
@@ -13,22 +12,15 @@ export class BookQueryService {
 
 	private unsubscribe$ = new Subject<void>();
 
-	constructor(private eventBus: EventBus,
+	constructor(private eventStore: EventStore,
 				private bookQueryRepository: BookQueryRepository) {
 	}
 
 	selectAll(): Observable<Array<BookQuery>> {
 
-		return this.bookQueryRepository.selectAll();
+		const foundEvent = this.eventStore.findEventByType(BooksFetchedEvent.type);
 
-		// return this.eventBus
-		// 		   .pipe(
-		// 			   filter((event: DomainEvent) => event.constructor.name === BooksFetchedEvent.type),
-		// 			   take(1),
-		// 			   switchMap(() => {
-		// 				   return this.bookQueryRepository.selectAll();
-		// 			   })
-		// 		   );
+		return this.bookQueryRepository.selectAll();
 	}
 
 	destroy(): void {
