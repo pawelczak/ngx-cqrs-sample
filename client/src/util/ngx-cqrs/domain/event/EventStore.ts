@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError, Subject } from 'rxjs';
+import { Observable, throwError, Subject, merge } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 
 import { DomainEvent } from 'ngx-cqrs';
@@ -16,13 +16,13 @@ export class EventStore {
 		this.domainEvents$.next(event);
 	}
 
-	findEventByType(domainEventType: string): DomainEvent {
+	findEventByType(eventType: string): DomainEvent {
 
 		const events: Array<DomainEvent> = this.getEvents();
 
 		return events.reverse()
 					 .find((event: DomainEvent) => {
-						 return event.constructor.name === domainEventType;
+						 return event.constructor.name === eventType;
 					 });
 	}
 
@@ -32,6 +32,30 @@ export class EventStore {
 	//
 	// 	)
 	// }
+
+	waitForEvent(eventType: string): Observable<DomainEvent> {
+
+		const eventFound$ = new Subject<DomainEvent>();
+
+		// wait for future occurrence
+
+		const futureOccurrencesOfEvent$ = this.waitForNextEventOccurrence(eventType);
+
+		const a$ = merge(
+			eventFound$,
+			futureOccurrencesOfEvent$
+		);
+
+		// find in a history
+
+		const event = this.findEventByType(eventType);
+
+		if (event) {
+			eventFound$.next(event);
+		}
+
+		return a$;
+	}
 
 	waitForNextEventOccurrence(eventType: string): Observable<DomainEvent>;
 	waitForNextEventOccurrence(event: DomainEvent): Observable<DomainEvent>;

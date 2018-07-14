@@ -12,6 +12,62 @@ describe('EventStore -', () => {
 	class AwesomeEvent extends DomainEvent {
 	}
 
+	describe('findEventByType -', () => {
+
+		let eventStore: EventStore;
+
+		beforeEach(() => {
+			TestBed.configureTestingModule({
+				imports: [
+					CqrsModule.forRoot()
+				]
+			});
+			eventStore = TestBed.get(EventStore);
+		});
+
+		it('should find last occurrence of the event - by type', () => {
+
+			// given
+			const awesomeEvent = new AwesomeEvent();
+
+			const occuredEvents = [
+				new GreatEvent(),
+				new GreatEvent(),
+				awesomeEvent,
+				new GreatEvent()
+			];
+			occuredEvents.forEach((event: DomainEvent) => {
+				eventStore.next(event);
+			});
+
+			// when
+			const event = eventStore.findEventByType(AwesomeEvent.type);
+
+			// then
+			expect(event.equals(awesomeEvent)).toBeTruthy();
+		});
+
+		it('should find last occurrence of the event, when many of them has happend - by type', () => {
+
+			// given
+			const awesomeEventOne = new AwesomeEvent(),
+				awesomeEventTwo = new AwesomeEvent();
+			const occuredEvents = [
+				awesomeEventOne,
+				awesomeEventTwo
+			];
+			occuredEvents.forEach((event: DomainEvent) => {
+				eventStore.next(event);
+			});
+
+			// when
+			const event = eventStore.findEventByType(AwesomeEvent.type);
+
+			// then
+			expect(event.equals(awesomeEventTwo)).toBeTruthy();
+		});
+	});
+
 	describe('waitForNextEventOccurrence -', () => {
 
 		let eventStore: EventStore,
