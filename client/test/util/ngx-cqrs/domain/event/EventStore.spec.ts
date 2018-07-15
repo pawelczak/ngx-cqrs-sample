@@ -96,9 +96,31 @@ describe('EventStore -', () => {
 					  });
 		});
 
+		it('should find event in the rich EventStore', (done) => {
+
+			// given
+			const awesomeEventOne = new AwesomeEvent();
+
+			eventStore.next(new GreatEvent());
+			eventStore.next(awesomeEventOne);
+			eventStore.next(new GreatEvent());
+			eventStore.next(new GreatEvent());
+
+			// when
+			eventStore.waitForEvent(AwesomeEvent.type)
+					  .subscribe((event: DomainEvent) => {
+
+						  // then
+						  expect(event.equals(awesomeEventOne)).toBeTruthy();
+						  done();
+					  });
+		});
+
 		it('should wait for future events', (done) => {
 
 			// given
+			const awesomeEventOne = new AwesomeEvent();
+
 			eventStore.waitForEvent(AwesomeEvent.type)
 					  .subscribe((event: DomainEvent) => {
 
@@ -108,7 +130,25 @@ describe('EventStore -', () => {
 					  });
 
 			// when
+			eventStore.next(awesomeEventOne);
+		});
+
+		it('should wait for future events of specific type', (done) => {
+
+			// given
 			const awesomeEventOne = new AwesomeEvent();
+
+			eventStore.waitForEvent(AwesomeEvent.type)
+					  .subscribe((event: DomainEvent) => {
+
+						  // then
+						  expect(event.equals(awesomeEventOne)).toBeTruthy();
+						  done();
+					  });
+
+			// when
+			eventStore.next(new GreatEvent());
+			eventStore.next(new GreatEvent());
 
 			eventStore.next(awesomeEventOne);
 		});
