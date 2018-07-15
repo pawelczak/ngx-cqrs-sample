@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError, Subject, merge } from 'rxjs';
+import { Observable, throwError, Subject, of } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 
 import { DomainEvent } from 'ngx-cqrs';
@@ -26,35 +26,21 @@ export class EventStore {
 					 });
 	}
 
-	// waitForEventByType(): Observable<DomainEvent> {
-	//
-	// 	this.pipe(
-	//
-	// 	)
-	// }
-
+	/**
+	 * First tries to event event in the history,
+	 * than method waits for future occurrences of the event.
+	 */
 	waitForEvent(eventType: string): Observable<DomainEvent> {
 
-		const eventFound$ = new Subject<DomainEvent>();
-
-		// wait for future occurrence
-
-		const futureOccurrencesOfEvent$ = this.waitForNextEventOccurrence(eventType);
-
-		const a$ = merge(
-			eventFound$,
-			futureOccurrencesOfEvent$
-		);
-
 		// find in a history
-
 		const event = this.findEventByType(eventType);
 
 		if (event) {
-			eventFound$.next(event);
+			return of(event);
 		}
 
-		return a$;
+		// wait for future occurrence
+		return this.waitForNextEventOccurrence(eventType);
 	}
 
 	waitForNextEventOccurrence(eventType: string): Observable<DomainEvent>;

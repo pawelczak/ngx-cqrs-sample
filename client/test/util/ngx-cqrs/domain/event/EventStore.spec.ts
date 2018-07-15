@@ -12,9 +12,9 @@ describe('EventStore -', () => {
 	class AwesomeEvent extends DomainEvent {
 	}
 
-	describe('findEventByType -', () => {
+	let eventStore: EventStore;
 
-		let eventStore: EventStore;
+	describe('findEventByType -', () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
@@ -68,10 +68,55 @@ describe('EventStore -', () => {
 		});
 	});
 
+	describe('waitForEvent -', () => {
+
+		beforeEach(() => {
+			TestBed.configureTestingModule({
+				imports: [
+					CqrsModule.forRoot()
+				]
+			});
+			eventStore = TestBed.get(EventStore);
+		});
+
+		it('should find event in the history', (done) => {
+
+			// given
+			const awesomeEventOne = new AwesomeEvent();
+
+			eventStore.next(awesomeEventOne);
+
+			// when
+			eventStore.waitForEvent(AwesomeEvent.type)
+					  .subscribe((event: DomainEvent) => {
+
+						  // then
+						  expect(event.equals(awesomeEventOne)).toBeTruthy();
+						  done();
+					  });
+		});
+
+		it('should wait for future events', (done) => {
+
+			// given
+			eventStore.waitForEvent(AwesomeEvent.type)
+					  .subscribe((event: DomainEvent) => {
+
+						  // then
+						  expect(event.equals(awesomeEventOne)).toBeTruthy();
+						  done();
+					  });
+
+			// when
+			const awesomeEventOne = new AwesomeEvent();
+
+			eventStore.next(awesomeEventOne);
+		});
+	});
+
 	describe('waitForNextEventOccurrence -', () => {
 
-		let eventStore: EventStore,
-			beforeEvent: DomainEvent,
+		let beforeEvent: DomainEvent,
 			afterEvent: DomainEvent;
 
 		beforeEach(() => {
