@@ -29,12 +29,9 @@ export class BookListComponent implements OnInit, OnDestroy {
 
 		this.bookCommandService.fetch();
 
-
 		this.bookQueryService
 			.selectAll()
-			.pipe(
-				takeUntil(this.unsubscribe$)
-			)
+			.pipe(takeUntil(this.unsubscribe$))
 			.subscribe((books: Array<BookQuery>) => {
 				this.books = books;
 				this.changeDetectorRef.detectChanges();

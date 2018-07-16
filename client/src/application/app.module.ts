@@ -9,6 +9,7 @@ import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 
 import { AuthorModule } from '../library/author/app/AuthorModule';
+import { BookModule } from '../library/book/app';
 
 @NgModule({
 	imports: [
@@ -20,7 +21,8 @@ import { AuthorModule } from '../library/author/app/AuthorModule';
 		MatToolbarModule,
 		MatButtonModule,
 
-		AuthorModule.forRoot()
+		AuthorModule.forRoot(),
+		BookModule.forRoot()
 	],
 	declarations: [
 		AppComponent

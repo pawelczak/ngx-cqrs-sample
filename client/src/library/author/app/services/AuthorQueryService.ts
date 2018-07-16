@@ -4,29 +4,29 @@ import { switchMap, takeUntil } from 'rxjs/operators';
 
 import { EventStore } from 'ngx-cqrs/domain/event/EventStore';
 
-import { BookQueryRepository } from '../../domain/query/BookQueryRepository';
-import { BookQuery } from '../../domain/query/BookQuery';
-import { BooksFetchedEvent } from '../../domain/command/fetch/BooksFetchedEvent';
+import { AuthorQuery } from '../../query/domain/AuthorQuery';
+import { AuthorQueryRepository } from '../../query/domain/AuthorQueryRepository';
+import { AuthorsLoadedEvent } from '../../command/domain/AuthorEvents';
 
 @Injectable()
-export class BookQueryService {
+export class AuthorQueryService {
 
 	private unsubscribe$ = new Subject<void>();
 
 	constructor(private eventStore: EventStore,
-				private bookQueryRepository: BookQueryRepository) {
-	}
+				private authorQueryRepository: AuthorQueryRepository) {}
 
-	selectAll(): Observable<Array<BookQuery>> {
+	selectAll(): Observable<Array<AuthorQuery>> {
 
 		return this.eventStore
-				   .waitForEvent(BooksFetchedEvent.type)
+				   .waitForEvent(AuthorsLoadedEvent.type)
 				   .pipe(
 					   switchMap(() => {
-						   return this.bookQueryRepository.selectAll();
+						   return this.authorQueryRepository.selectAll();
 					   }),
 					   takeUntil(this.unsubscribe$)
 				   );
+
 	}
 
 	destroy(): void {
