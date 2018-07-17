@@ -2,9 +2,8 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 import { CommandDispatcher } from 'ngx-cqrs';
 
-import { IncAuthorRatingCommand } from '../../../command/domain/AuthorCommands';
-import { AuthorQuery } from '../../../query/domain/AuthorQuery';
-
+import { AuthorQuery } from '../../../domain/query/AuthorQuery';
+import { IncAuthorRatingCommand } from '../../../domain/command/AuthorCommands';
 
 @Component({
 	selector: 'cqrs-author-panel',

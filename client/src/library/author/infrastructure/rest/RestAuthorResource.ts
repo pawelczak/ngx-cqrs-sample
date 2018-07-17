@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-import { AuthorAggregate } from '../../domain/AuthorAggregate';
-import { AuthorResource } from '../../domain/AuthorResource';
 import { RestAuthorConverter } from './RestAuthorConverter';
+
+import { AuthorResource } from '../../domain/command/AuthorResource';
+import { AuthorAggregate } from '../../domain/command/AuthorAggregate';
 
 import * as rawAuthors from './authors.json';
 import * as rawRatings from './authorRatings.json';
+
 
 @Injectable()
 export class RestAuthorResource extends AuthorResource {

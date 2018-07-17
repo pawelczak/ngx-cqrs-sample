@@ -6,23 +6,25 @@ import { CqrsModule } from 'ngx-cqrs';
 
 import { BookModule } from '../../book/app';
 
-import { authorReducer } from '../command/infrastructure/store/AuthorReducer';
-import { commandHandlerProviders } from '../command/domain/handlers/commandHandlerProviders';
-import { AuthorResource } from '../command/domain/AuthorResource';
-import { RestAuthorResource } from '../command/infrastructure/rest/RestAuthorResource';
-import { AuthorAggregateRepository } from '../command/domain/AuthorAggregateRepository';
-import { StoreAuthorAggregateRepository } from '../command/infrastructure/store/StoreAuthorAggregateRepository';
-import { AuthorAggregateConverter } from '../command/infrastructure/store/AuthorAggregateConverter';
-import { RestAuthorConverter } from '../command/infrastructure/rest/RestAuthorConverter';
 
-import { AuthorQueryRepository } from '../query/domain/AuthorQueryRepository';
-import { StoreAuthorQueryRepository } from '../query/infrastructure/StoreAuthorQueryRepository';
+import { AuthorResource } from '../domain/command/AuthorResource';
+import { RestAuthorResource } from '../infrastructure/rest/RestAuthorResource';
+import { StoreAuthorAggregateRepository } from '../infrastructure/ngrx/StoreAuthorAggregateRepository';
+import { RestAuthorConverter } from '../infrastructure/rest/RestAuthorConverter';
+import { AuthorAggregateConverter } from '../infrastructure/ngrx/AuthorAggregateConverter';
+import { commandHandlerProviders } from '../domain/command/handlers/commandHandlerProviders';
+import { authorReducer } from '../infrastructure/ngrx/AuthorReducer';
+import { AuthorAggregateRepository } from '../domain/command/AuthorAggregateRepository';
+import { AuthorQueryRepository } from '../domain/query/AuthorQueryRepository';
+import { StoreAuthorQueryRepository } from '../infrastructure/ngrx/query/StoreAuthorQueryRepository';
 
 import { AuthorListComponent } from '../ui/list/AuthorListComponent';
 import { AuthorPanelComponent } from '../ui/list/authorpanel/AuthorPanelComponent';
 
 import { AuthorCommandService } from './services/AuthorCommandService';
 import { AuthorQueryService } from './services/AuthorQueryService';
+
+
 
 
 const storeName = 'library';

@@ -16,7 +16,7 @@ import { BookCommandService } from '../../app/services/BookCommandService';
 })
 export class BookListComponent implements OnInit, OnDestroy {
 
-	books: Array<BookQuery>;
+	books: Array<BookQuery> = [];
 
 	private unsubscribe$ = new Subject<void>();
 
@@ -27,7 +27,7 @@ export class BookListComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 
-		this.bookCommandService.fetch();
+		this.bookCommandService.init();
 
 		this.bookQueryService
 			.selectAll()

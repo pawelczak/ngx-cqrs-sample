@@ -7,7 +7,8 @@ import { EventStore } from 'ngx-cqrs/domain/event/EventStore';
 
 import { BookCommandService, BooksFetchedEvent } from '../../../book/app';
 
-import { LoadAuthorsCommand } from '../../command/domain/AuthorCommands';
+import { LoadAuthorsCommand } from '../../domain/command/AuthorCommands';
+
 
 @Injectable()
 export class AuthorCommandService {
@@ -28,7 +29,7 @@ export class AuthorCommandService {
 				this.commandDispatcher.dispatch(new LoadAuthorsCommand());
 			});
 
-		this.bookCommandService.fetch();
+		this.bookCommandService.init();
 	}
 
 	destroy(): void {

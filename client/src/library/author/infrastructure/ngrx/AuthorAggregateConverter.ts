@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { AuthorStoreAnemia } from './AuthorStoreAnemia';
+import { AuthorAggregate } from '../../domain/command/AuthorAggregate';
 
-import { AuthorAggregate } from '../../domain/AuthorAggregate';
 
 @Injectable()
 export class AuthorAggregateConverter {

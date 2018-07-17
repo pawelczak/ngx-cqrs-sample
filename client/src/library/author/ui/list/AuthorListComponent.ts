@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Injector, ChangeDetectorRef
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { AuthorQuery } from '../../query/domain/AuthorQuery';
+import { AuthorQuery } from '../../domain/query/AuthorQuery';
 
 import { AuthorCommandService } from '../../app/services/AuthorCommandService';
 import { AuthorQueryService } from '../../app/services/AuthorQueryService';

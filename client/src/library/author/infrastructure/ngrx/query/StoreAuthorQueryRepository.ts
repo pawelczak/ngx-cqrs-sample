@@ -3,11 +3,11 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AuthorQueryRepository } from '../domain/AuthorQueryRepository';
-import { AuthorQuery } from '../domain/AuthorQuery';
-import { AuthorState } from '../../command/infrastructure/store/AuthorState';
+import { AuthorQueryRepository } from '../../../domain/query/AuthorQueryRepository';
+import { AuthorQuery } from '../../../domain/query/AuthorQuery';
+import { AuthorState } from '../AuthorState';
 
-import { BookQueryRepository } from '../../../book/domain/query/BookQueryRepository';
+import { BookQueryRepository } from '../../../../book/domain/query/BookQueryRepository';
 
 @Injectable()
 export class StoreAuthorQueryRepository extends AuthorQueryRepository {

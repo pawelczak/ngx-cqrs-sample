@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { AuthorAggregate } from '../../domain/AuthorAggregate';
-import { BookContribution } from '../../domain/BookContribution';
+import { AuthorAggregate } from '../../domain/command/AuthorAggregate';
+import { BookContribution } from '../../domain/command/BookContribution';
+
 
 @Injectable()
 export class RestAuthorConverter {

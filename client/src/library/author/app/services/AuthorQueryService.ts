@@ -4,9 +4,11 @@ import { switchMap, takeUntil } from 'rxjs/operators';
 
 import { EventStore } from 'ngx-cqrs/domain/event/EventStore';
 
-import { AuthorQuery } from '../../query/domain/AuthorQuery';
-import { AuthorQueryRepository } from '../../query/domain/AuthorQueryRepository';
-import { AuthorsLoadedEvent } from '../../command/domain/AuthorEvents';
+import { AuthorsLoadedEvent } from '../../domain/command/AuthorEvents';
+
+import { AuthorQueryRepository } from '../../domain/query/AuthorQueryRepository';
+import { AuthorQuery } from '../../domain/query/AuthorQuery';
+
 
 @Injectable()
 export class AuthorQueryService {

@@ -17,7 +17,7 @@ export class BookCommandService {
 				private commandDispatcher: CommandDispatcher) {
 	}
 
-	fetch(): void {
+	init(): void {
 
 		const foundEvent = this.eventStore.findEventByType(BooksFetchedEvent.type);
 

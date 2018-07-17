@@ -5,9 +5,9 @@ import { map, take } from 'rxjs/operators';
 
 import { EventDispatcher } from 'ngx-cqrs';
 
-import { AuthorAggregateRepository } from '../../domain/AuthorAggregateRepository';
-import { AuthorAggregate } from '../../domain/AuthorAggregate';
-import { AuthorChangedEvent, AuthorsLoadedEvent } from '../../domain/AuthorEvents';
+import { AuthorAggregate } from '../../domain/command/AuthorAggregate';
+import { AuthorChangedEvent, AuthorsLoadedEvent } from '../../domain/command/AuthorEvents';
+import { AuthorAggregateRepository } from '../../domain/command/AuthorAggregateRepository';
 
 import { AuthorAggregateConverter } from './AuthorAggregateConverter';
 import { AuthorState } from './AuthorState';
