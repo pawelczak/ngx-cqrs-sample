@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { EventDispatcher } from 'ngx-cqrs';
 
-import { BookStoreAnemia } from '../BookStoreAnemia';
+import { NgrxAuthorAnemia } from '../NgrxAuthorAnemia';
 import { BOOK_STORE_NAME } from '../NgrxBookStoreName';
 import { NgrxBookConverter } from '../NgrxBookConverter';
 
@@ -27,7 +27,7 @@ export class NgrxBookAggregateRepository extends BookAggregateRepository {
 	selectAll(): Observable<Array<BookAggregate>> {
 		return this.store.select(state => state[this.storeName].books.entities)
 				   .pipe(
-					   map((entities: { [key: string]: BookStoreAnemia }) => {
+					   map((entities: { [key: string]: NgrxAuthorAnemia }) => {
 						   return Object.keys(entities)
 										.map(key => entities[key])
 										.map((book: any) => {

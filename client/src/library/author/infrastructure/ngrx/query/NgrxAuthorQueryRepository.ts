@@ -10,7 +10,7 @@ import { AuthorState } from '../AuthorState';
 import { BookQueryRepository } from '../../../../book/domain/query/BookQueryRepository';
 
 @Injectable()
-export class StoreAuthorQueryRepository extends AuthorQueryRepository {
+export class NgrxAuthorQueryRepository extends AuthorQueryRepository {
 
 	constructor(private store: Store<any>,
 				bookQueryRepository: BookQueryRepository) {

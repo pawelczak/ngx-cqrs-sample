@@ -7,7 +7,7 @@ import { CommandHandler, CommandBus, CommandDispatcher } from 'ngx-cqrs';
 import { AuthorAggregateRepository } from '../AuthorAggregateRepository';
 import { AuthorResource } from '../AuthorResource';
 import { AuthorAggregate } from '../AuthorAggregate';
-import { LoadAuthorsCommand } from '../AuthorCommands';
+import { LoadAuthorsCommand } from './LoadAuthorsCommand';
 
 import { BookAggregateRepository } from '../../../../book/domain/command/BookAggregateRepository';
 import { BookAggregate } from '../../../../book/domain/command/BookAggregate';

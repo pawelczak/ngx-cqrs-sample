@@ -4,7 +4,7 @@ import { switchMap, takeUntil } from 'rxjs/operators';
 
 import { EventStore } from 'ngx-cqrs/domain/event/EventStore';
 
-import { AuthorsLoadedEvent } from '../../domain/command/AuthorEvents';
+import { AuthorsLoadedEvent } from '../../domain/command/load/AuthorsLoadedEvent';
 
 import { AuthorQueryRepository } from '../../domain/query/AuthorQueryRepository';
 import { AuthorQuery } from '../../domain/query/AuthorQuery';

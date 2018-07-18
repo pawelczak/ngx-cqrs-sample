@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { BookStoreAnemia } from '../BookStoreAnemia';
+import { NgrxAuthorAnemia } from '../NgrxAuthorAnemia';
 import { BOOK_STORE_NAME } from '../NgrxBookStoreName';
 
 import { BookQueryRepository } from '../../../domain/query/BookQueryRepository';
@@ -20,7 +20,7 @@ export class NgrxBookQueryRepository extends BookQueryRepository {
 	selectAll(): Observable<Array<BookQuery>> {
 		return this.store.select(state => state[this.storeName].books.entities)
 			.pipe(
-				map((entities: { [key: string]: BookStoreAnemia }) => {
+				map((entities: { [key: string]: NgrxAuthorAnemia }) => {
 					return Object.keys(entities)
 								 .map(id => entities[id])
 								 .map((book: any) => {

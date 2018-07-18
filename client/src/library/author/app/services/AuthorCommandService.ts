@@ -7,7 +7,7 @@ import { EventStore } from 'ngx-cqrs/domain/event/EventStore';
 
 import { BookCommandService, BooksFetchedEvent } from '../../../book/app';
 
-import { LoadAuthorsCommand } from '../../domain/command/AuthorCommands';
+import { LoadAuthorsCommand } from '../../domain/command/load/LoadAuthorsCommand';
 
 
 @Injectable()

@@ -5,20 +5,21 @@ import { map, take } from 'rxjs/operators';
 
 import { EventDispatcher } from 'ngx-cqrs';
 
-import { AuthorAggregate } from '../../domain/command/AuthorAggregate';
-import { AuthorChangedEvent, AuthorsLoadedEvent } from '../../domain/command/AuthorEvents';
-import { AuthorAggregateRepository } from '../../domain/command/AuthorAggregateRepository';
+import { AuthorAggregate } from '../../../domain/command/AuthorAggregate';
+import { AuthorAggregateRepository } from '../../../domain/command/AuthorAggregateRepository';
+import { AuthorChangedEvent } from '../../../domain/command/AuthorEvents';
+import { AuthorsLoadedEvent } from '../../../domain/command/load/AuthorsLoadedEvent';
 
-import { AuthorAggregateConverter } from './AuthorAggregateConverter';
-import { AuthorState } from './AuthorState';
+import { NgrxAuthorAggregateConverter } from '../NgrxAuthorAggregateConverter';
+import { AuthorState } from '../AuthorState';
 
 
 @Injectable()
-export class StoreAuthorAggregateRepository extends AuthorAggregateRepository {
+export class NgrxAuthorAggregateRepository extends AuthorAggregateRepository {
 
 	constructor(private store: Store<any>,
 				private eventDispatcher: EventDispatcher,
-				private authorAggregateConverter: AuthorAggregateConverter) {
+				private authorAggregateConverter: NgrxAuthorAggregateConverter) {
 		super();
 	}
 

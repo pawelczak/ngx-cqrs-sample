@@ -1,4 +1,4 @@
-import { AuthorStoreAnemia } from './AuthorStoreAnemia';
+import { AuthorStoreAnemia } from './NgrxAuthorAnemia';
 
 export class AuthorState {
 

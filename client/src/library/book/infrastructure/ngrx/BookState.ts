@@ -1,7 +1,7 @@
-import { BookStoreAnemia } from './BookStoreAnemia';
+import { NgrxAuthorAnemia } from './NgrxAuthorAnemia';
 
 export class BookState {
 
-	entities: {[key: string]: BookStoreAnemia} = {};
+	entities: {[key: string]: NgrxAuthorAnemia} = {};
 
 }

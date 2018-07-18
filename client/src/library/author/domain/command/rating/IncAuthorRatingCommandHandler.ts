@@ -6,8 +6,8 @@ import { CommandHandler, EventDispatcher } from 'ngx-cqrs';
 import { AuthorAggregate } from '../AuthorAggregate';
 import { AuthorResource } from '../AuthorResource';
 import { AuthorAggregateRepository } from '../AuthorAggregateRepository';
-import { IncAuthorRatingCommand } from '../AuthorCommands';
-import { IncAuthorRatingEvent } from '../AuthorEvents';
+import { IncAuthorRatingCommand } from './IncAuthorRatingCommand';
+import { IncAuthorRatingEvent } from './IncAuthorRatingEvent';
 
 
 @Injectable()

@@ -1,7 +1,7 @@
 import { COMMAND_HANDLERS } from 'ngx-cqrs';
 
-import { LoadAuthorCommandHandler } from './LoadAuthorCommandHandler';
-import { IncAuthorRatingCommandHandler } from './IncAuthorRatingCommandHandler';
+import { LoadAuthorCommandHandler } from './load/LoadAuthorCommandHandler';
+import { IncAuthorRatingCommandHandler } from './rating/IncAuthorRatingCommandHandler';
 
 export const commandHandlerProviders = [
 	{

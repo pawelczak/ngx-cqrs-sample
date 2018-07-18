@@ -1,5 +1,5 @@
 import { BookState } from './BookState';
-import { BookStoreAnemia } from './BookStoreAnemia';
+import { NgrxAuthorAnemia } from './NgrxAuthorAnemia';
 
 import { BooksFetchedEvent } from '../../domain/command/fetch/BooksFetchedEvent';
 
@@ -11,11 +11,11 @@ export function bookReducer(state: BookState = defaultState, action: any): BookS
 
 		case BooksFetchedEvent.type:
 
-			const books = action.payload.data as Array<BookStoreAnemia>;
+			const books = action.payload.data as Array<NgrxAuthorAnemia>;
 
 			let booksAsEntities = {};
 
-			books.forEach((book: BookStoreAnemia) => {
+			books.forEach((book: NgrxAuthorAnemia) => {
 				booksAsEntities[book.id] = book;
 			});
 

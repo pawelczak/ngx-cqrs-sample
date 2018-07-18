@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 
-import { BookStoreAnemia } from './BookStoreAnemia';
+import { NgrxAuthorAnemia } from './NgrxAuthorAnemia';
 
 import { BookAggregate } from '../../domain/command/BookAggregate';
 
 @Injectable()
 export class NgrxBookConverter {
 
-	convert(book: BookAggregate): BookStoreAnemia {
-		return new BookStoreAnemia(book.getId(), book.getTitle(), book.getContent(), book.getYearOfPublication());
+	convert(book: BookAggregate): NgrxAuthorAnemia {
+		return new NgrxAuthorAnemia(book.getId(), book.getTitle(), book.getContent(), book.getYearOfPublication());
 	}
 
-	convertBooks(books: Array<BookAggregate>): Array<BookStoreAnemia> {
+	convertBooks(books: Array<BookAggregate>): Array<NgrxAuthorAnemia> {
 		return books.map((book: BookAggregate) => this.convert(book));
 	}
 

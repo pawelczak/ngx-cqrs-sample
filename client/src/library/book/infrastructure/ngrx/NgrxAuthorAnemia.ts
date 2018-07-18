@@ -1,4 +1,4 @@
-export class BookStoreAnemia {
+export class NgrxAuthorAnemia {
 
 	constructor(public id: string,
 				public title: string,

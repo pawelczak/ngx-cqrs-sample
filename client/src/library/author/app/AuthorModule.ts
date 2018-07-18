@@ -9,14 +9,14 @@ import { BookModule } from '../../book/app';
 
 import { AuthorResource } from '../domain/command/AuthorResource';
 import { RestAuthorResource } from '../infrastructure/rest/RestAuthorResource';
-import { StoreAuthorAggregateRepository } from '../infrastructure/ngrx/StoreAuthorAggregateRepository';
+import { NgrxAuthorAggregateRepository } from '../infrastructure/ngrx/command/NgrxAuthorAggregateRepository';
 import { RestAuthorConverter } from '../infrastructure/rest/RestAuthorConverter';
-import { AuthorAggregateConverter } from '../infrastructure/ngrx/AuthorAggregateConverter';
-import { commandHandlerProviders } from '../domain/command/handlers/commandHandlerProviders';
+import { NgrxAuthorAggregateConverter } from '../infrastructure/ngrx/NgrxAuthorAggregateConverter';
+import { commandHandlerProviders } from '../domain/command/commandHandlerProviders';
 import { authorReducer } from '../infrastructure/ngrx/AuthorReducer';
 import { AuthorAggregateRepository } from '../domain/command/AuthorAggregateRepository';
 import { AuthorQueryRepository } from '../domain/query/AuthorQueryRepository';
-import { StoreAuthorQueryRepository } from '../infrastructure/ngrx/query/StoreAuthorQueryRepository';
+import { NgrxAuthorQueryRepository } from '../infrastructure/ngrx/query/NgrxAuthorQueryRepository';
 
 import { AuthorListComponent } from '../ui/list/AuthorListComponent';
 import { AuthorPanelComponent } from '../ui/list/authorpanel/AuthorPanelComponent';
@@ -36,14 +36,14 @@ const providers: Array<Provider> = [
 	},
 	{
 		provide: AuthorQueryRepository,
-		useClass: StoreAuthorQueryRepository
+		useClass: NgrxAuthorQueryRepository
 	},
 	{
 		provide: AuthorAggregateRepository,
-		useClass: StoreAuthorAggregateRepository
+		useClass: NgrxAuthorAggregateRepository
 	},
 	RestAuthorConverter,
-	AuthorAggregateConverter,
+	NgrxAuthorAggregateConverter,
 	...commandHandlerProviders,
 	AuthorCommandService,
 	AuthorQueryService
