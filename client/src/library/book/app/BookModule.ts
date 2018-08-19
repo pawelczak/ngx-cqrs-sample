@@ -13,11 +13,8 @@ import { NgrxBookConverter } from '../infrastructure/ngrx/NgrxBookConverter';
 import { bookReducer } from '../infrastructure/ngrx/BookReducer';
 import { RestBookResource } from '../infrastructure/rest/RestBookResource';
 import { RestBookConverter } from '../infrastructure/rest/RestBookConverter';
+
 import { BookListComponent } from '../ui/list/BookListComponent';
-
-import { BookQueryService } from './services/BookQueryService';
-import { BookCommandService } from './services/BookCommandService';
-
 
 const storeName = 'books';
 
@@ -30,10 +27,7 @@ const providers: Array<Provider> = [
 		useClass: RestBookResource
 	},
 	RestBookConverter,
-	NgrxBookConverter,
-
-	BookQueryService,
-	BookCommandService
+	NgrxBookConverter
 ];
 
 @NgModule({

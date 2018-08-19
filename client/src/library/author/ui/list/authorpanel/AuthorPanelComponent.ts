@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { CommandDispatcher } from 'ngx-cqrs';
+import { AuthorCommandService} from '../../../app/services/AuthorCommandService';
 
-import { AuthorQuery } from '../../../domain/query/AuthorQuery';
-import { IncAuthorRatingCommand } from '../../../domain/command/rating/IncAuthorRatingCommand';
+import { AuthorQuery} from '../../../domain/query/AuthorQuery';
+
 
 @Component({
 	selector: 'cqrs-author-panel',
@@ -20,11 +20,11 @@ export class AuthorPanelComponent {
 
 	showMore: boolean = false;
 
-	constructor(private commandDispatcher: CommandDispatcher) {
+	constructor(private authorCommandService: AuthorCommandService) {
 	}
 
 	increaseAuthorsRating(authorId: string): void {
-		this.commandDispatcher.dispatch(new IncAuthorRatingCommand(authorId));
+		this.authorCommandService.increaseRating(authorId);
 	}
 
 	showContributions(): void {

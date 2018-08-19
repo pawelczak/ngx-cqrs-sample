@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Injector, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Injector, ChangeDetectorRef, OnDestroy, Inject, forwardRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -6,7 +6,6 @@ import { AuthorQuery } from '../../domain/query/AuthorQuery';
 
 import { AuthorCommandService } from '../../app/services/AuthorCommandService';
 import { AuthorQueryService } from '../../app/services/AuthorQueryService';
-
 
 @Component({
 	selector: 'cqrs-author-list',
@@ -25,7 +24,8 @@ export class AuthorListComponent implements OnInit, OnDestroy {
 	constructor(private injector: Injector,
 				private changeDetectorRef: ChangeDetectorRef,
 				private authorCommandService: AuthorCommandService,
-				private authorQueryService: AuthorQueryService) {
+				private authorQueryService: AuthorQueryService
+	) {
 	}
 
 	ngOnInit() {

@@ -5,9 +5,11 @@ import { takeUntil } from 'rxjs/operators';
 import { CommandDispatcher } from 'ngx-cqrs';
 import { EventStore } from 'ngx-cqrs/domain/event/EventStore';
 
-import { BookCommandService, BooksFetchedEvent } from '../../../book/app';
 
 import { LoadAuthorsCommand } from '../../domain/command/load/LoadAuthorsCommand';
+import { IncAuthorRatingCommand } from '../../domain/command/rating/IncAuthorRatingCommand';
+
+import { BookCommandService, BooksFetchedEvent } from '../../../book';
 
 
 @Injectable()
@@ -30,6 +32,10 @@ export class AuthorCommandService {
 			});
 
 		this.bookCommandService.init();
+	}
+
+	increaseRating(authorId: string): void {
+		this.commandDispatcher.dispatch(new IncAuthorRatingCommand(authorId));
 	}
 
 	destroy(): void {

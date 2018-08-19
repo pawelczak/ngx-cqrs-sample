@@ -7,14 +7,15 @@ import { AuthorQueryRepository } from '../../../domain/query/AuthorQueryReposito
 import { AuthorQuery } from '../../../domain/query/AuthorQuery';
 import { AuthorState } from '../AuthorState';
 
-import { BookQueryRepository } from '../../../../book/domain/query/BookQueryRepository';
+import { BookQueryService } from '../../../../book';
+
 
 @Injectable()
 export class NgrxAuthorQueryRepository extends AuthorQueryRepository {
 
 	constructor(private store: Store<any>,
-				bookQueryRepository: BookQueryRepository) {
-		super(bookQueryRepository);
+				bookQueryService: BookQueryService) {
+		super(bookQueryService);
 	}
 
 	selectAuthorsFromState(): Observable<Array<AuthorQuery>> {

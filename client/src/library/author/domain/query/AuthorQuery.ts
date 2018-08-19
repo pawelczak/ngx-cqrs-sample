@@ -1,4 +1,4 @@
-import { BookQuery } from '../../../book/domain/query/BookQuery';
+import { BookQuery } from '../../../book';
 
 import { BookContributionQuery } from './BookContributionQuery';
 

@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 
-import { AuthorListComponent } from '../library/author/ui/list/AuthorListComponent';
-import { BookListComponent } from '../library/book/ui/list/BookListComponent';
+import { AuthorListComponent } from '../library/author';
+import { BookListComponent } from '../library/book';
+
 
 
 export const routes: Routes = [

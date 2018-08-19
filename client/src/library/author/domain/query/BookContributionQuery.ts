@@ -1,4 +1,4 @@
-import { BookQuery } from '../../../book/domain/query/BookQuery';
+import { BookQuery } from '../../../book';
 
 export class BookContributionQuery {
 

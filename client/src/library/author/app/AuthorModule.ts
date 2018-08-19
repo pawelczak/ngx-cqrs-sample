@@ -4,8 +4,7 @@ import { MatButtonModule, MatCardModule, MatListModule, MatProgressSpinnerModule
 
 import { CqrsModule } from 'ngx-cqrs';
 
-import { BookModule } from '../../book/app';
-
+import { BookModule } from '../../book';
 
 import { AuthorResource } from '../domain/command/AuthorResource';
 import { RestAuthorResource } from '../infrastructure/rest/RestAuthorResource';
@@ -23,9 +22,7 @@ import { AuthorPanelComponent } from '../ui/list/authorpanel/AuthorPanelComponen
 
 import { AuthorCommandService } from './services/AuthorCommandService';
 import { AuthorQueryService } from './services/AuthorQueryService';
-
-
-
+import { AuthorBookCommandService } from './command/AuthorBookCommandService';
 
 const storeName = 'library';
 
@@ -45,7 +42,9 @@ const providers: Array<Provider> = [
 	RestAuthorConverter,
 	NgrxAuthorAggregateConverter,
 	...commandHandlerProviders,
+
 	AuthorCommandService,
+	AuthorBookCommandService,
 	AuthorQueryService
 ];
 

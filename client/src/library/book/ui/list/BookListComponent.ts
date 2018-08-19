@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { BookQuery } from '../../domain/query/BookQuery';
+
 import { BookQueryService } from '../../app/services/BookQueryService';
 import { BookCommandService } from '../../app/services/BookCommandService';
 

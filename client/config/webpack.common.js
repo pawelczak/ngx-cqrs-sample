@@ -110,11 +110,11 @@ module.exports = {
 			template: 'src/index.html',
 			chunksSortMode: 'dependency'
 		}),
-		new webpack.ContextReplacementPlugin(
-			/angular(\\|\/)core(\\|\/)/,
-			helpers.root('./src'),
-			{}
-		),
+		// new webpack.ContextReplacementPlugin(
+		// 	/angular(\\|\/)core(\\|\/)/,
+		// 	helpers.root('./src'),
+		// 	{}
+		// ),
 		new CopyWebpackPlugin([{
 			from: path.join(__dirname, '../src/assets'),
 			to: path.join(__dirname, '../dist/assets')

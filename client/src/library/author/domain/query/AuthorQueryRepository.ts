@@ -1,19 +1,19 @@
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { BookQuery, BookQueryService } from '../../../book';
+
 import { AuthorQuery } from './AuthorQuery';
 
-import { BookQuery } from '../../../book/domain/query/BookQuery';
-import { BookQueryRepository } from '../../../book/domain/query/BookQueryRepository';
 
 export abstract class AuthorQueryRepository {
 
-	protected constructor(protected bookQueryRepository: BookQueryRepository) {
+	protected constructor(protected bookQueryService: BookQueryService) {
 	}
 
 	selectAll(): Observable<Array<AuthorQuery>> {
 
-		const books$ = this.bookQueryRepository.selectAll(),
+		const books$ = this.bookQueryService.selectAll(),
 			authors$ = this.selectAuthorsFromState();
 
 		return combineLatest(authors$, books$)

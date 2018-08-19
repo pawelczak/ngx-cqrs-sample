@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { zip } from 'rxjs';
+import { zip, of } from 'rxjs';
 import { switchMap, map, take } from 'rxjs/operators';
 
 import { CommandHandler, CommandBus, CommandDispatcher } from 'ngx-cqrs';
@@ -9,8 +9,9 @@ import { AuthorResource } from '../AuthorResource';
 import { AuthorAggregate } from '../AuthorAggregate';
 import { LoadAuthorsCommand } from './LoadAuthorsCommand';
 
-import { BookAggregateRepository } from '../../../../book/domain/command/BookAggregateRepository';
-import { BookAggregate } from '../../../../book/domain/command/BookAggregate';
+import { AuthorBookCommandService } from '../../../app/command/AuthorBookCommandService';
+import { Book } from '../Book';
+
 
 @Injectable()
 export class LoadAuthorCommandHandler extends CommandHandler {
@@ -19,7 +20,8 @@ export class LoadAuthorCommandHandler extends CommandHandler {
 				private commandDispatcher: CommandDispatcher,
 				private authorAggregateRepository: AuthorAggregateRepository,
 				private authorResource: AuthorResource,
-				private bookAggregateRepository: BookAggregateRepository) {
+				private authorBookCommandService: AuthorBookCommandService
+	) {
 		super(LoadAuthorsCommand.type);
 	}
 
@@ -40,14 +42,14 @@ export class LoadAuthorCommandHandler extends CommandHandler {
 
 					});
 
-					return this.bookAggregateRepository
+					return this.authorBookCommandService
 							   .selectAll()
 							   .pipe(
 								   take(1),
-								   map((bookAggregates: Array<BookAggregate>) => {
+								   map((books: Array<Book>) => {
 
 									   aggregates.forEach((aggregate) => {
-										   aggregate.setContributions(bookAggregates);
+										   aggregate.setContributions(books);
 									   });
 
 									   this.authorAggregateRepository.save(aggregates);

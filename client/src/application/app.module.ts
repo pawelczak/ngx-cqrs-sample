@@ -5,11 +5,12 @@ import { MatButtonModule, MatToolbarModule } from '@angular/material';
 
 import { CqrsStrategy, CqrsModule } from 'ngx-cqrs';
 
+import { BookModule } from '../library/book';
+import { AuthorModule } from '../library/author';
+
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 
-import { AuthorModule } from '../library/author/app/AuthorModule';
-import { BookModule } from '../library/book/app';
 
 @NgModule({
 	imports: [

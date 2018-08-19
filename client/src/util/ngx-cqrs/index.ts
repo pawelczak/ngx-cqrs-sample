@@ -11,6 +11,7 @@ export * from './domain/command/COMMAND_HANDLERS';
 export * from './domain/command/CommandBus';
 export * from './domain/command/CommandDispatcher';
 export * from './domain/command/CommandHandler';
+export * from './domain/command/decorators';
 
 /**
  * Event package exports

@@ -1,6 +1,6 @@
 import { BookContribution } from './BookContribution';
+import { Book } from './Book';
 
-import { BookAggregate } from '../../../book/domain/command/BookAggregate';
 
 export class AuthorAggregate {
 
@@ -22,10 +22,10 @@ export class AuthorAggregate {
 		return this.rating;
 	}
 
-	setContributions(books: Array<BookAggregate>): void {
+	setContributions(books: Array<Book>): void {
 
 		this.contributions.forEach((contrib: BookContribution) => {
-			const book = books.find((book: BookAggregate) => book.getId() === contrib.id);
+			const book = books.find((book: Book) => book.getId() === contrib.id);
 			if (book) {
 				contrib.setBook(book);
 			}

@@ -4,11 +4,14 @@ import { BookQueryRepository } from '../domain/query/BookQueryRepository';
 
 import { NgrxBookQueryRepository } from '../infrastructure/ngrx/query/NgrxBookQueryRepository';
 
+import { BookQueryService } from './services/BookQueryService';
+
 const providers = [
 	{
 		provide: BookQueryRepository,
 		useClass: NgrxBookQueryRepository
-	}
+	},
+	BookQueryService
 ];
 
 @NgModule({

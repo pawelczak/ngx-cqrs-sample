@@ -1,12 +1,12 @@
-import { BookAggregate } from '../../../book/domain/command/BookAggregate';
+import { Book } from './Book';
 
 export class BookContribution {
 
-	private book: BookAggregate;
+	private book: Book;
 
 	constructor(public id: string) {}
 
-	setBook(book: BookAggregate): void {
+	setBook(book: Book): void {
 		this.book = book;
 	}
 }
